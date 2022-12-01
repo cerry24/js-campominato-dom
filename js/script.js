@@ -1,17 +1,25 @@
 function getNewGridSquare(blackList, index) {
     const newSquare = document.createElement('div');
-
+    score = 0;
     newSquare.classList.add('ms_square', 'd-flex');
 
     newSquare.addEventListener('click', function(){
+        score++;
+
         if ( blackList.includes(index) ) {
-            alert('BOOM! Hai perso dopo aver accettato qusto messaggio schiaccia play per iniziare una nuova partita');
+            alert(`BOOM!!! Hai perso! Il tuo punteggio è ${score - 1}. Dopo aver accettato qusto messaggio schiaccia play per iniziare una nuova partita`);
         } else {
             newSquare.classList.add('clicked');
+            console.log(score);
+        }
+
+        if ( score === 84 ) {
+            alert('Complimenti hai vinto!!!')
         }
     })
 
     return newSquare;
+
 }
 
 function getRandomUniqueNumber(blackList, numMin, numMax) {
@@ -20,10 +28,10 @@ function getRandomUniqueNumber(blackList, numMin, numMax) {
 
     while ( verify === false ) {
         randomNum = Math.floor( Math.random() * (numMax - numMin + 1) + numMin );
-
+        
         if ( !blackList.includes(randomNum) ) {
             verify = true;
-
+            
             blackList.push(randomNum);
         }
 
@@ -48,6 +56,7 @@ btnPlay.addEventListener('click', function() {
     grid.innerHTML = "";
     
     const bombsPositions = [];
+    let score;
 
     while ( bombsPositions.length < 16 ) {
         getRandomUniqueNumber(bombsPositions, 1, 100)
