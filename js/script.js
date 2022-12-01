@@ -1,20 +1,24 @@
 function getNewGridSquare(blackList, index) {
     const newSquare = document.createElement('div');
     score = 0;
+    const scoreOutput = document.getElementById('score-board');
+
+    scoreOutput.innerHTML = 'Il tuo punteggio &egrave;';
+
     newSquare.classList.add('ms_square', 'd-flex');
 
     newSquare.addEventListener('click', function(){
         score++;
 
         if ( blackList.includes(index) ) {
-            alert(`BOOM!!! Hai perso! Il tuo punteggio è ${score - 1}. Dopo aver accettato qusto messaggio schiaccia play per iniziare una nuova partita`);
+            alert(`BOOM!!! Hai perso!. Dopo aver accettato qusto messaggio schiaccia play per iniziare una nuova partita`);
         } else {
             newSquare.classList.add('clicked');
-            console.log(score);
+            scoreOutput.innerHTML = `Il tuo punteggio &egrave; ${score}`
         }
 
         if ( score === 84 ) {
-            alert('Complimenti hai vinto!!!')
+            alert('Complimenti hai vinto!!! Dopo aver accettato qusto messaggio schiaccia play per iniziare una nuova partita')
         }
     })
 
