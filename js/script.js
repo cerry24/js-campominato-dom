@@ -1,4 +1,4 @@
-function getNewGridSquare () {
+function getNewGridSquare() {
     const newSquare = document.createElement('div');
 
     newSquare.classList.add('ms_square', 'd-flex');
@@ -9,6 +9,21 @@ function getNewGridSquare () {
 
     return newSquare;
 }
+
+function getRandomUniqueNumber(blackList, numMin, numMax) {
+    let verify = false;
+    let randomNum;
+
+    while ( verify === false ) {
+        randomNum = Math.floor( Math.random() * (numMax - numMin + 1) + numMin );
+
+        if ( !blackList.includes(randomNum) ) {
+            verify = true;
+        }
+
+        return randomNum;
+    }
+} 
 
 
 
