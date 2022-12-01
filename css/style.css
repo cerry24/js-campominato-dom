@@ -1,0 +1,25 @@
+header,
+footer {
+    background-color: white;
+}
+
+main.bg-aquamarine {
+    background-color: #7fffd4;
+}
+
+.ms_grid {
+    width: 700px;
+    height: 700px;
+}
+
+.ms_grid .ms_square {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 2px black solid;
+    cursor: pointer;
+}
+
+
+.ms_square.clicked {
+    background-color: rgb(103, 188, 216);
+}
