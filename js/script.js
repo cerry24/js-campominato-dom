@@ -19,11 +19,13 @@ function getRandomUniqueNumber(blackList, numMin, numMax) {
 
         if ( !blackList.includes(randomNum) ) {
             verify = true;
+
+            blackList.push(randomNum);
         }
 
         return randomNum;
     }
-} 
+}
 
 
 
@@ -31,6 +33,7 @@ function getRandomUniqueNumber(blackList, numMin, numMax) {
 
 
 
+const bombsPositions = [];
 const btnPlay = document.getElementById('ms_btn-play');
 
 btnPlay.addEventListener('click', function() {
@@ -41,6 +44,8 @@ btnPlay.addEventListener('click', function() {
 
     grid.innerHTML = "";
 
+    bombsPositions.length = 0;
+
     for ( i = 1; i <= 100; i++ ) {
         const gridSquare = getNewGridSquare();
 
@@ -48,4 +53,11 @@ btnPlay.addEventListener('click', function() {
 
         grid.appendChild(gridSquare);
     }
+
+    while ( bombsPositions.length < 16 ) {
+        getRandomUniqueNumber(bombsPositions, 1, 100)
+    }
+    
+    console.log(bombsPositions);
 })
+
